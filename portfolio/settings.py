@@ -5,9 +5,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'zr0-y-x6f0e#karwjos7u%)&q+c$la_n)gz)yyh&bdy7h6b34f')
 
-DEBUG = os.environ.get('DEBUG', False)
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['muratportfolio.azurewebsites.net', 'localhost']
+ALLOWED_HOSTS = ['muratportfolio.azurewebsites.net', 'localhost','127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -16,7 +16,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'portfolio',
+    'portfolio_app',
 ]
 
 MIDDLEWARE = [
