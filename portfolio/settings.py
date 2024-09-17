@@ -48,7 +48,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'your_project_name.wsgi.application'
+WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
