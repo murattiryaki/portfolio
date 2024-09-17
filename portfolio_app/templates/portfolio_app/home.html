@@ -1,82 +1,125 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Homepage</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Link to your custom CSS file -->
+    <link rel="stylesheet" href="{% static 'portfolio_app/styles.css' %}">
 </head>
+
 <body>
-    <div class="container">
+    <!-- Hero Section -->
+    <header class="hero bg-dark text-white text-center py-5">
+        <div class="container">
+            <h1 class="display-4">Welcome to My Portfolio</h1>
+            <p class="lead">Showcasing my skills, projects, and professional journey.</p>
+        </div>
+    </header>
+
+    <div class="container my-5">
         <!-- Resume Section -->
-        <h2>Download My Resume</h2>
-        <p>
-            <a href="{% static 'portfolio_app/resume.pdf' %}" download>Download PDF</a><br>
-            <a href="{% static 'portfolio_app/resume.docx' %}" download>Download Word</a>
-        </p>
-        
+        <section id="resume" class="my-5">
+            <h2 class="text-center mb-4">Download My Resume</h2>
+            <div class="text-center">
+                <a href="{% static 'portfolio_app/resume.pdf' %}" class="btn btn-primary mr-2" download>Download PDF</a>
+                <a href="{% static 'portfolio_app/resume.docx' %}" class="btn btn-secondary" download>Download Word</a>
+            </div>
+        </section>
+
         <!-- About Me Section -->
-        <h2>About Me</h2>
-        <p><strong>Background:</strong> {{ bio.background }}</p>
-        <p><strong>Career Goals:</strong> {{ bio.career_goals }}</p>
-        
+        <section id="about" class="my-5">
+            <h2 class="text-center mb-4">About Me</h2>
+            <p class="lead"><strong>Background:</strong> {{ bio.background }}</p>
+            <p class="lead"><strong>Career Goals:</strong> {{ bio.career_goals }}</p>
+        </section>
+
         <!-- Skills Section -->
-        <h2>Skills</h2>
-        <ul>
-            {% for skill in skills %}
-            <li>{{ skill }}</li>
-            {% endfor %}
-        </ul>
-        
+        <section id="skills" class="my-5 bg-light p-4 rounded">
+            <h2 class="text-center mb-4">Skills</h2>
+            <div class="row">
+                <ul class="list-inline text-center">
+                    {% for skill in skills %}
+                    <li class="list-inline-item p-2 bg-primary text-white rounded m-2">{{ skill }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+
         <!-- Projects Section -->
-        <h2>My Projects</h2>
-        <div class="row">
-            {% for project in projects %}
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ project.title }}</h5>
-                        <p class="card-text">{{ project.description }}</p>
-                        <a href="{{ project.github_url }}" class="btn btn-primary" target="_blank">View on GitHub</a>
+        <section id="projects" class="my-5">
+            <h2 class="text-center mb-4">My Projects</h2>
+            <div class="row">
+                {% for project in projects %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ project.title }}</h5>
+                            <p class="card-text">{{ project.description }}</p>
+                            <a href="{{ project.github_url }}" class="btn btn-outline-primary" target="_blank">View on GitHub</a>
+                        </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-        
+        </section>
+
         <!-- Job History Section -->
-        <h2>Job History</h2>
-        <ul>
-            {% for job in job_history %}
-            <li>
-                <strong>{{ job.job_title }} at {{ job.company }}</strong><br>
-                {{ job.description }}
-            </li>
-            {% endfor %}
-        </ul>
+        <section id="job-history" class="my-5">
+            <h2 class="text-center mb-4">Job History</h2>
+            <ul class="timeline">
+                {% for job in job_history %}
+                <li>
+                    <div class="timeline-badge"><i class="glyphicon glyphicon-briefcase"></i></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4 class="timeline-title">{{ job.job_title }} at {{ job.company }}</h4>
+                        </div>
+                        <div class="timeline-body">
+                            <p>{{ job.description }}</p>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
 
         <!-- Education Section -->
-        <h2>Education</h2>
-        <ul>
-            {% for edu in education %}
-            <li>
-                <strong>{{ edu.degree }}</strong>, {{ edu.institution }}<br>
-                {{ edu.description }}
-            </li>
-            {% endfor %}
-        </ul>
+        <section id="education" class="my-5 bg-light p-4 rounded">
+            <h2 class="text-center mb-4">Education</h2>
+            <ul>
+                {% for edu in education %}
+                <li>
+                    <strong>{{ edu.degree }}</strong>, {{ edu.institution }}<br>
+                    {{ edu.description }}
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
 
         <!-- Contact Section -->
-        <h2>Contact Me</h2>
-        <p>Email: <a href="mailto:{{ contact_links.email }}">{{ contact_links.email }}</a></p>
-        <p>LinkedIn: <a href="{{ contact_links.linkedin }}" target="_blank">My LinkedIn</a></p>
-        <p>GitHub: <a href="{{ contact_links.github }}" target="_blank">My GitHub</a></p>
+        <section id="contact" class="my-5">
+            <h2 class="text-center mb-4">Contact Me</h2>
+            <div class="text-center">
+                <p>Email: <a href="mailto:{{ contact_links.email }}">{{ contact_links.email }}</a></p>
+                <p>LinkedIn: <a href="{{ contact_links.linkedin }}" target="_blank">My LinkedIn</a></p>
+                <p>GitHub: <a href="{{ contact_links.github }}" target="_blank">My GitHub</a></p>
+            </div>
+        </section>
     </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>© 2024 My Portfolio. All Rights Reserved.</p>
+    </footer>
 
     <!-- Bootstrap and JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,95 @@
+/* General styling for a clean professional look */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Hero section styling */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('your-hero-image-url') no-repeat center center/cover;
+    height: 60vh;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Section padding */
+section {
+    padding: 60px 0;
+}
+
+/* Card styles */
+.card {
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Button styles */
+.btn-primary,
+.btn-secondary {
+    border-radius: 25px;
+}
+
+/* Timeline style for job history */
+.timeline {
+    list-style: none;
+    padding: 0;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    background: #007bff;
+    width: 3px;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 0;
+}
+
+.timeline li {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.timeline-panel {
+    background: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    position: relative;
+    width: 45%;
+}
+
+.timeline-badge {
+    background: #007bff;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+}
+
+/* Skills section styles */
+.skills-section li {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 25px;
+    margin: 10px;
+}
+
+/* Footer styling */
+footer {
+    background-color: #343a40;
+    color: white;
+    padding: 10px 0;
+}

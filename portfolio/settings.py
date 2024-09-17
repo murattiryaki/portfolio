@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'zr0-y-x6f0e#karwjos7u%)&q+c$la_n)gz)yyh&bdy7h6b34f')
 
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = True
 
 ALLOWED_HOSTS = ['muratportfolio.azurewebsites.net', 'localhost','127.0.0.1']
 
@@ -77,5 +77,16 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
+
+# Directory where Django will collect static files from all apps when you run collectstatic
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Additional locations of static files (during development)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'portfolio_app/static'),
+]
+
+
+
