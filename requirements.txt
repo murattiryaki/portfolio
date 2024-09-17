@@ -1,5 +1,12 @@
+altgraph==0.17.2
 asgiref==3.8.1
 dj-database-url==2.2.0
 Django==4.2.16
+django-heroku==0.3.1
+future==0.18.2
+macholib==1.15.2
+psycopg2==2.9.9
+six==1.15.0
 sqlparse==0.5.1
 typing_extensions==4.12.2
+whitenoise==6.7.0
