@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Homepage</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Resume Section -->
+        <h2>Download My Resume</h2>
+        <p>
+            <a href="{% static 'portfolio_app/resume.pdf' %}" download>Download PDF</a><br>
+            <a href="{% static 'portfolio_app/resume.docx' %}" download>Download Word</a>
+        </p>
+        
+        <!-- About Me Section -->
+        <h2>About Me</h2>
+        <p><strong>Background:</strong> {{ bio.background }}</p>
+        <p><strong>Career Goals:</strong> {{ bio.career_goals }}</p>
+        
+        <!-- Skills Section -->
+        <h2>Skills</h2>
+        <ul>
+            {% for skill in skills %}
+            <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+        
+        <!-- Projects Section -->
+        <h2>My Projects</h2>
+        <div class="row">
+            {% for project in projects %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ project.title }}</h5>
+                        <p class="card-text">{{ project.description }}</p>
+                        <a href="{{ project.github_url }}" class="btn btn-primary" target="_blank">View on GitHub</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Job History Section -->
+        <h2>Job History</h2>
+        <ul>
+            {% for job in job_history %}
+            <li>
+                <strong>{{ job.job_title }} at {{ job.company }}</strong><br>
+                {{ job.description }}
+            </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Education Section -->
+        <h2>Education</h2>
+        <ul>
+            {% for edu in education %}
+            <li>
+                <strong>{{ edu.degree }}</strong>, {{ edu.institution }}<br>
+                {{ edu.description }}
+            </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Contact Section -->
+        <h2>Contact Me</h2>
+        <p>Email: <a href="mailto:{{ contact_links.email }}">{{ contact_links.email }}</a></p>
+        <p>LinkedIn: <a href="{{ contact_links.linkedin }}" target="_blank">My LinkedIn</a></p>
+        <p>GitHub: <a href="{{ contact_links.github }}" target="_blank">My GitHub</a></p>
+    </div>
+
+    <!-- Bootstrap and JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
