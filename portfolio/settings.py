@@ -1,6 +1,5 @@
 import os
 from pathlib import Path
-from azure.storage.blob import BlobServiceClient
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -72,20 +71,15 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
-
-AZURE_ACCOUNT_NAME = os.getenv('AZURE_ACCOUNT_NAME')
+# Azure Storage for Static Files
+AZURE_ACCOUNT_NAME = os.getenv('AZURE_ACCOUNT_NAME', '')
 AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
 STATICFILES_STORAGE = 'storages.backends.azure_storage.AzureStorage'
