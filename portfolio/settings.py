@@ -78,8 +78,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Azure Storage for Static Files
-AZURE_ACCOUNT_NAME = os.getenv('AZURE_ACCOUNT_NAME', '')
-AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
-STATICFILES_STORAGE = 'storages.backends.azure_storage.AzureStorage'
