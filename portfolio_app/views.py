@@ -2,26 +2,26 @@ from django.shortcuts import render
 
 def home(request):
     bio = {
-        'background': 'I am a software developer with a passion for learning and building meaningful projects.',
+        'background': 'xxxx',
         'career_goals': 'My goal is to leverage my skills in Python and Django to build scalable web applications and grow as a developer.'
     }
     skills = ['Python', 'Django', 'JavaScript', 'HTML/CSS', 'Git', 'Teamwork', 'Problem Solving']
     job_history = [
         {
-            'job_title': 'Software Developer',
+            'job_title': 'xxxx',
             'company': 'Apple Maps Project',
             'description': 'Working on enhancing mapping solutions and implementing new features.'
         },
         {
-            'job_title': 'Junior Developer',
-            'company': 'XYZ Tech',
+            'job_title': 'xxxxx',
+            'company': 'xxxx',
             'description': 'Developed and maintained web applications using Django and React.'
         }
     ]
     education = [
         {
-            'degree': 'B.Sc. in Computer Science',
-            'institution': 'University of XYZ',
+            'degree': 'TUD',
+            'institution': 'xxxx',
             'description': 'Focused on software development and data structures.'
         }
     ]
@@ -38,9 +38,9 @@ def home(request):
         }
     ]
     contact_links = {
-        'email': 'your-email@example.com',
-        'linkedin': 'https://linkedin.com/in/yourprofile',
-        'github': 'https://github.com/yourusername'
+        'email': 'murat.dublin@gmail.com',
+        'linkedin': 'https://linkedin.com/in/murattiryaki',
+        'github': 'https://github.com/murattiryaki'
     }
     return render(request, 'portfolio_app/home.html', {
         'projects': projects,

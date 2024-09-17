@@ -15,8 +15,14 @@
     <!-- Hero Section -->
     <header class="hero bg-dark text-white text-center py-5">
         <div class="container">
-            <h1 class="display-4">Welcome to My Portfolio</h1>
-            <p class="lead">Showcasing my skills, projects, and professional journey.</p>
+            <h1 class="display-4">Murat Tiryaki</h1>
+            <p class="lead">xxxx</p>
+            <div class="text-center"></div>
+                <p>Email: <a href="mailto:{{ contact_links.email }}">{{ contact_links.email }}</a></p>
+                <p>LinkedIn: <a href="{{ contact_links.linkedin }}" target="_blank">My LinkedIn</a></p>
+                <p>GitHub: <a href="{{ contact_links.github }}" target="_blank">My GitHub</a></p>
+            </div>
+            
         </div>
     </header>
 
@@ -103,11 +109,7 @@
         <!-- Contact Section -->
         <section id="contact" class="my-5">
             <h2 class="text-center mb-4">Contact Me</h2>
-            <div class="text-center">
-                <p>Email: <a href="mailto:{{ contact_links.email }}">{{ contact_links.email }}</a></p>
-                <p>LinkedIn: <a href="{{ contact_links.linkedin }}" target="_blank">My LinkedIn</a></p>
-                <p>GitHub: <a href="{{ contact_links.github }}" target="_blank">My GitHub</a></p>
-            </div>
+            
         </section>
     </div>
 
@@ -116,10 +118,7 @@
         <p>© 2024 My Portfolio. All Rights Reserved.</p>
     </footer>
 
-    <!-- Bootstrap and JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
 </body>
 
 </html>
