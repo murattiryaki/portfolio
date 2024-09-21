@@ -7,57 +7,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Homepage</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Link to your custom CSS file -->
     <link rel="stylesheet" href="{% static 'portfolio_app/styles.css' %}">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
-    <!-- Hero Section -->
-    <header class="hero bg-dark text-white text-center py-5">
-        <div class="container">
-            <h1 class="display-4">Murat Tiryaki</h1>
-            <p class="lead">xxxx</p>
-            <div class="text-center"></div>
-                <p>Email: <a href="mailto:{{ contact_links.email }}">{{ contact_links.email }}</a></p>
-                <p>LinkedIn: <a href="{{ contact_links.linkedin }}" target="_blank">My LinkedIn</a></p>
-                <p>GitHub: <a href="{{ contact_links.github }}" target="_blank">My GitHub</a></p>
-            </div>
-            
+
+<header class="hero text-white text-center py-3" style="background-image: url('{% static 'portfolio_app/images/hero-image.png' %}'); background-size: cover;">
+    <div class="container">
+        <h1 class="display-4">Murat Tiryaki</h1>
+        <p class="lead software-engineer">Software Engineer</p>
+        <p class="lead contact-details">
+            <a href="mailto:murat.dublin@gmail.com" class="text-white">murat.dublin@gmail.com</a> | +353 89 223 1896 | Dublin, Ireland
+        </p>
+        <p class="lead contact-details">
+            <a href="https://linkedin.com/in/murattiryaki" target="_blank" class="text-white">LinkedIn</a> | <a href="https://github.com/murattiryaki" target="_blank" class="text-white">GitHub</a>
+        </p>
+    </div>
+</header>
+
+
+
+    <div class="container my-4">
+   
+        <section id="about" class="mb-3">
+            <h2 class="text-center mb-3">About Me</h2>
+            <p class="lead">{{ objective.objective }}</p>
+        </section>
+
+
+<section id="skills" class="my-5 bg-light p-4 rounded">
+    <h2 class="text-center mb-4">Skills</h2>
+    <div class="row">
+        
+        <div class="col-md-6">
+            <p><strong>Programming Languages:</strong> Python, C#, JavaScript, HTML, CSS</p>
+            <p><strong>Databases:</strong> MySQL, PostgreSQL</p>
+            <p><strong>Cloud & DevOps:</strong> AWS, Azure</p>
+            <p><strong>Frameworks & Tools:</strong> Django, Git, Bootstrap</p>
         </div>
-    </header>
 
-    <div class="container my-5">
-        <!-- Resume Section -->
-        <section id="resume" class="my-5">
-            <h2 class="text-center mb-4">Download My Resume</h2>
-            <div class="text-center">
-                <a href="{% static 'portfolio_app/resume.pdf' %}" class="btn btn-primary mr-2" download>Download PDF</a>
-                <a href="{% static 'portfolio_app/resume.docx' %}" class="btn btn-secondary" download>Download Word</a>
-            </div>
-        </section>
+        
+        <div class="col-md-6">
+            <p><strong>Others:</strong> Customer Service, Data Analysis, Artificial Intelligence, Natural Language Processing, Speech Recognition, Localization Quality Testing</p>
+        </div>
+    </div>
+</section>
 
-        <!-- About Me Section -->
-        <section id="about" class="my-5">
-            <h2 class="text-center mb-4">About Me</h2>
-            <p class="lead"><strong>Background:</strong> {{ bio.background }}</p>
-            <p class="lead"><strong>Career Goals:</strong> {{ bio.career_goals }}</p>
-        </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="my-5 bg-light p-4 rounded">
-            <h2 class="text-center mb-4">Skills</h2>
-            <div class="row">
-                <ul class="list-inline text-center">
-                    {% for skill in skills %}
-                    <li class="list-inline-item p-2 bg-primary text-white rounded m-2">{{ skill }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="my-5">
-            <h2 class="text-center mb-4">My Projects</h2>
+        <section id="projects" class="mb-3">
+            <h2 class="text-center mb-3">My Projects</h2>
             <div class="row">
                 {% for project in projects %}
                 <div class="col-md-4 mb-4">
@@ -66,6 +66,9 @@
                             <h5 class="card-title">{{ project.title }}</h5>
                             <p class="card-text">{{ project.description }}</p>
                             <a href="{{ project.github_url }}" class="btn btn-outline-primary" target="_blank">View on GitHub</a>
+                            {% if project.live_demo %}
+                            <a href="{{ project.live_demo }}" class="btn btn-outline-success" target="_blank">Live Demo</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -73,52 +76,66 @@
             </div>
         </section>
 
-        <!-- Job History Section -->
-        <section id="job-history" class="my-5">
-            <h2 class="text-center mb-4">Job History</h2>
-            <ul class="timeline">
-                {% for job in job_history %}
-                <li>
-                    <div class="timeline-badge"><i class="glyphicon glyphicon-briefcase"></i></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h4 class="timeline-title">{{ job.job_title }} at {{ job.company }}</h4>
-                        </div>
-                        <div class="timeline-body">
-                            <p>{{ job.description }}</p>
-                        </div>
-                    </div>
-                </li>
-                {% endfor %}
-            </ul>
-        </section>
 
-        <!-- Education Section -->
-        <section id="education" class="my-5 bg-light p-4 rounded">
-            <h2 class="text-center mb-4">Education</h2>
-            <ul>
-                {% for edu in education %}
-                <li>
-                    <strong>{{ edu.degree }}</strong>, {{ edu.institution }}<br>
-                    {{ edu.description }}
-                </li>
-                {% endfor %}
-            </ul>
-        </section>
+<section id="education" class="mb-3 bg-light p-3 rounded">
+    <h2 class="text-center mb-3">Education</h2>
+    <ul>
+        <li class="entry">
+            <strong>Higher Diploma in Science in Computing</strong> | Technological University Dublin | Graduation: September 2024
+        </li>
+        <li class="entry">
+            <strong>Postgraduate Diploma in International Business (NFQ Level 9)</strong> | Griffith College Dublin | 2018
+        </li>
+        <li class="entry">
+            <strong>Mechanical Engineering</strong> | Istanbul University | 2004
+        </li>
+    </ul>
+</section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="my-5">
-            <h2 class="text-center mb-4">Contact Me</h2>
-            
-        </section>
-    </div>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3">
+<section id="job-history" class="mb-3">
+    <h2 class="text-center mb-3">Job History</h2>
+    <ul>
+        <li class="entry">
+            <strong>Data Quality Controller</strong> | TELUS International | Jan 2019 - Present | Dublin, Ireland
+        </li>
+        <li class="entry">
+            <strong>Customer Service and Business Data Technician</strong> | Moravia (Outsourced to Apple) | 04/2018 – 12/2018 | Cork, Ireland
+        </li>
+        <li class="entry">
+            <strong>Sales Engineer</strong> | Henkel | 05/2015 – 01/2017 | Istanbul, Turkey
+        </li>
+        <li class="entry">
+            <strong>Sales Engineer</strong> | Forbo Movement Systems | 03/2013 – 04/2015 | Istanbul, Turkey
+        </li>
+        <li class="entry">
+            <strong>Customer Service Technical Specialist</strong> | Fiat Turkey | 05/2010 - 03/2013 | Istanbul, Turkey
+        </li>
+    </ul>
+</section>
+
+
+<section id="certifications" class="mb-3 bg-light p-3 rounded">
+    <h2 class="text-center mb-3">Certifications</h2>
+    <ul>
+        {% for cert in certifications %}
+        <li class="entry">
+            <strong>{{ cert.name }}</strong> - {{ cert.issuer }} | Issued: {{ cert.date }}
+            {% if cert.expiry_date %} | Expiry: {{ cert.expiry_date }}{% endif %} |
+            <a href="{{ cert.url }}" target="_blank" class="credential-link">View Credential</a>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+
+
+<body>
+    <footer class="text-white text-center py-2">
         <p>© 2024 My Portfolio. All Rights Reserved.</p>
-    </footer>
+    </footer>    
+</body>
 
-    
+
 </body>
 
 </html>
